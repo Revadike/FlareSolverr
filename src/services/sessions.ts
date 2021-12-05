@@ -120,7 +120,10 @@ export async function create(session: string, options: SessionCreateOptions): Pr
   const puppeteerOptions: any = {
     product: 'firefox',
     headless: process.env.HEADLESS !== 'false',
-    timeout: process.env.BROWSER_TIMEOUT || 30000
+    timeout: process.env.BROWSER_TIMEOUT || 30000,
+    args: [
+      '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
+    ]
   }
 
   puppeteerOptions.extraPrefsFirefox = buildExtraPrefsFirefox(options.proxy)
